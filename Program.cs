@@ -38,21 +38,6 @@
                 //.Select(solution => string.Join(" + ", solution)));
             }
             //output 3 -> [3, 3(Modified), 2 1, 1 2, 1 1 1 ]
-            public static int[][] GetCombination(int n)
-            {
-                int[][] answer = new int[n][];
-                for (int i = n - 1; i > 0; i--)
-                {
-                    string s = "";
-                    for (int j = i; j > 0; j--)
-                    {
-                        s += j + "+";
-                    }
-                    s = s.Remove(s.Length - 1);
-                    Console.WriteLine(s);
-                }
-                return answer;
-            }
             public static void CrazyBrackets(int n) //output 3 -> [((())), (()()), (())(), ()(()), ()()() ]
             {
                 List<List<int>> combinations = new List<List<int>>();
@@ -65,14 +50,17 @@
                 {
                     for (int j = 0; j < njagged.GetLength(i); j++)
                     {
-                        //Console.WriteLine(t[j] + );
                     }
                 }
             }
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            int[][] result = brackets.GetCombination2(4);
+            foreach (var row in result)
+            {
+                    Console.Write(String.Join(",", row));  
+            }
         }
     }
 }
