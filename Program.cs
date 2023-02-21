@@ -7,7 +7,7 @@ namespace CrazyBrackets
         //Algorithms like these are extensively used in crytopgrapthy.
         class brackets
         {
-            //Crazy Brackets Problem
+            //Crazy Brackets Problem.
             public static int[][] GetCombination2(int value, int startWith = -1)
             {
                 if (value <= 0)
@@ -47,6 +47,7 @@ namespace CrazyBrackets
                     {
                         answer.Add(t[row[i] - 1]);
                         if (i + 1 <= row.Length - 1 && row[i] != row[i + 1]) { answer.Add(t[row[i + 1] - 1]); answer.Add(t[row[i] - 1]); }
+                        //if (i + 1 <= row.Length - 1 && row[i] != row[i + 1]) { answer.Add(row.Reverse()); }
                     }
                 }
                 return answer;
