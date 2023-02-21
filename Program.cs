@@ -24,8 +24,6 @@ namespace CrazyBrackets
                         solutions.Add(next);
                     }
 
-                // Or just (if we are allow a bit of Linq)
-                //   return solutions.ToArray();
                 int[][] answer = new int[solutions.Count][];
                 for (int i = 0; i < solutions.Count; ++i) answer[i] = solutions[i];
                 return answer;
@@ -48,7 +46,7 @@ namespace CrazyBrackets
                     for (int i = 0; i < row.Length; i++)
                     {
                         answer.Add(t[row[i] - 1]);
-                        if (i + 1 <= row.Length - 1 && row[i] != row[i + 1]) { answer.Add(t[row[i] - 1]); answer.Add(t[row[i + 1] - 1]); }
+                        if (i + 1 <= row.Length - 1 && row[i] != row[i + 1]) { answer.Add(t[row[i + 1] - 1]); answer.Add(t[row[i] - 1]); }
                     }
                 }
                 return answer;
