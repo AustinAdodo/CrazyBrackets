@@ -52,11 +52,76 @@ namespace CrazyBrackets
                 }
                 return answer;
             }
+            public static List<string> Fizzbuzz(int n)
+            {
+                List<string> result = new();
+                for (int i = 1; i <= n; i++)
+                {
+                    if (i % 2 == 0) result.Add("Fizz");
+                    if (i % 3 == 0) result.Add("Buzz");
+                    if (i % 2 == 0 && i % 3 == 0) result.Add("FizzBuzz");
+                    else { result.Add(i.ToString()); }
+                }
+                return result;
+            }
+        }
+
+        static void Turttle_ham(string[] args)
+        {
+            string source = Console.ReadLine();
+            string target = Console.ReadLine();
+            string buffer = string.Empty;
+            buffer = source;
+            int i = 0;
+            List<string> answer = new List<string>();
+            while (source != target)
+            {
+                if (source[i] == target[i]) continue;
+                buffer = buffer.Substring(i, i - 0) + target[i] + source.Substring(i, source.Length - i);
+                answer.Add(buffer);
+                i++;
+            }
+            Console.WriteLine(string.Join("\n", answer));
+        }
+
+        static string Camel_case(string[] args)
+        {
+            string variableName = Console.ReadLine();
+            string result = string.Join("", variableName.Select((a, i) => (variableName[i - 1].ToString() == "_") ? a.ToString().ToUpper() : a.ToString
+            ()));
+            return result;
+        }
+
+        static void participants(string[] args)
+        {
+            int totalSelectedparticipants = 0;
+            int TotalPonts = 0;
+            List<List<int>> queries = new List<List<int>>();
+            List<int> PointsArr = new List<int>();
+            int N = int.Parse(Console.ReadLine());
+            int P = int.Parse(Console.ReadLine());
+            for (int i = 0; i < N; i++)
+            {
+                string[] inputs = Console.ReadLine().Split(' ');
+                for (int j = 0; j < P; j++)
+                {
+                    int points = int.Parse(inputs[j]);
+                    PointsArr.Add(points);
+                }
+                queries.Add(PointsArr);
+            }
+            foreach (List<int> item in queries)
+            {
+                int temp = 0;
+                temp = item.Where(a => a == item.Max()).Count();
+                TotalPonts += (temp * item.Max());
+                totalSelectedparticipants += temp;
+            }
+            Console.WriteLine(totalSelectedparticipants + " " + TotalPonts);
         }
         static void Main(string[] args)
         {
-            List<string> result = brackets.CrazyBrackets(3);
-            Console.Write(String.Join(" ", result));
+            Console.Write(String.Join(" ", brackets.Fizzbuzz(15)));
         }
     }
 }
